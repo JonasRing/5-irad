@@ -29,76 +29,15 @@
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
-<div onclick="showCoords(event)"><p id="demo"></p></div>
+<div onclick="showCoords(event)"><p id="demo">vad fan vad fan </p></div>
 <body>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.7.1.js"></script>
+    @*<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.7.1.js"></script>*@
 
     <div>
         <canvas id="board" width="900" height="900"></canvas>
     </div>
 
 
-    <script id="spel board" type="text/javascript">
 
-var kryssImage = new Image();
-var CirkelImage = new Image();
-
-kryssImage.src = "kryss.png";
-CirkelImage.src = "Cirkel.png";
-
-// Get the canvas context
-var spelCanvas = document.getElementById("board");
-var spelContext = spelCanvas.getContext("2d");
-
-drawBoard();
-// Draw the Spel board
-function drawBoard() {
-    spelContext.clearRect(0, 0, 900, 900);
-    spelContext.fillStyle = "grey";
-    spelContext.strokeStyle = "red";
-	
-// Draw the alternating squares
-for (var x = 0; x < 9; x++) {
-for (var y = 0; y < 9; y++) {
-
-spelContext.beginPath();
-spelContext.lineWidth = "1";
-spelContext.strokeStyle = "black";
-spelContext.rect(100* x, 100 * y, 100, 100);
-spelContext.stroke();
-
-}
-}
-}
-    // Add a border around the entire board
-spelContext.strokeRect(0, 0, 900, 900);
-$('#board').on('click', function(e){
-
-		var canvas = document.getElementById('board'),
-        x = e.pageX - canvas.offsetLeft,
-        y = e.pageY - canvas.offsetTop;
-		X=x/100,Y=y/100;
-		X=-(Math.ceil(-X));Y=-(Math.ceil(-Y))
-		X=(X*100),Y=(Y*100);
-		Image=CirkelImage;
-		spelContext.drawImage(Image, X,Y, 90, 90);
-		spelContext.strokeStyle = "black";
-		var fig=[Image,X,Y];
-		var colfig=[fig];
-
-		Image=CirkelImage;
-		CirkelImage=kryssImage;
-		kryssImage=Image;
-		spelContext.strokeStyle = "black";
-
-
-		//spelContext.drawImage(CirkelImage, X,Y, 100, 100);
-		//spelContext.stroke();
-
-    });
-
-
-
-    </script>
 
 </body>
