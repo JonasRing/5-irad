@@ -11,12 +11,12 @@ function drawBoard() {
     spelContext.clearRect(0, 0, 900, 900);
     spelContext.fillStyle = "grey";
     spelContext.strokeStyle = "red";
-    for (var x = 0; x < 9; x++) {
-        for (var y = 0; y < 9; y++) {
+    for (var x = 0; x < 30; x++) {
+        for (var y = 0; y < 30; y++) {
             spelContext.beginPath();
             spelContext.lineWidth = "1";
             spelContext.strokeStyle = "black";
-            spelContext.rect(100 * x, 100 * y, 100, 100);
+            spelContext.rect(30 * x, 30 * y, 30, 30);
             spelContext.stroke();
 
 
@@ -28,13 +28,13 @@ $('#board').on('click', function (e) {
 
     x = e.pageX - spelCanvas.offsetLeft;
     y = e.pageY - spelCanvas.offsetTop;
-    var X = x / 100; var Y = y / 100;
+    var X = x / 30; var Y = y / 30;
     var X = -(Math.ceil(-X)); var Y = -(Math.ceil(-Y));
-    var X = (X * 100); var Y = (Y * 100);
+    var X = (X * 30); var Y = (Y * 30);
 
     // window.alert("You Clicked!!!");
     Image = CirkelImage;
-    spelContext.drawImage(Image, X, Y, 90, 90);
+    spelContext.drawImage(Image, X, Y, 30, 30);
     spelContext.strokeStyle = "black";
     var fig = [Image, X, Y];
     var colfig = [fig];
