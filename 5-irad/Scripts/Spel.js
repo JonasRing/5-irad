@@ -62,8 +62,8 @@ $('#board').on('click', function (e) {
     //}
     //window.alert("row:"+xc+"column:"+yc+"___"+"Type of Image: " + Image.id);
     //window.alert("Row:" + yc + "Column:" + xc);
-    window.alert("Image:" + SquareCollection[0][0] + "--" + "clicked?" + SquareCollection[0][1]);
-
+    //window.alert("Image:" + SquareCollection[0][0] + "--" + "clicked?" + SquareCollection[0][1]);
+    document.getElementById('success').innerHTML = ("Image:" + SquareCollection[0][0] + "--" + "clicked?" + SquareCollection[0][1]);
     spelContext.strokeStyle = "black";
     var fig = [Image, X, Y];
     var colfig = [fig];
@@ -71,7 +71,6 @@ $('#board').on('click', function (e) {
     Image = KryssImage;
     KryssImage = CirkelImage;
     CirkelImage = Image;
-
     //canvas.strokeStyle = "black";
 });
 
