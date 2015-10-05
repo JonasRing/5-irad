@@ -75,7 +75,38 @@ $('#board').on('click', function (e) {
     else {
         window.alert("The Square has been Clicked before!!! Try another Square. ");
 
+<<<<<<< HEAD
     }
+=======
+    // window.alert("You Clicked!!!");
+    Image = KryssImage;
+    // if (!(SquareCollection[SquareCollection.length-1].clickedOrNot)){
+
+
+    spelContext.drawImage(Image, X, Y, 30, 30);
+    Square.click_image = Image.id;
+    Square.clicked = true;
+    var SquareCollection = [[Square.click_image, Square.clicked]];
+    // Collect all square and info
+
+    //SquareCollection.push(Square);
+    //}
+    //else {
+    //  window.alert("You clicked in the same Square!!! ");
+    //}
+    //window.alert("row:"+xc+"column:"+yc+"___"+"Type of Image: " + Image.id);
+    //window.alert("Row:" + yc + "Column:" + xc);
+    //window.alert("Image:" + SquareCollection[0][0] + "--" + "clicked?" + SquareCollection[0][1]);
+    document.getElementById('success').innerHTML = ("Image:" + SquareCollection[0][0] + "--" + "clicked?" + SquareCollection[0][1]);
+    spelContext.strokeStyle = "black";
+    var fig = [Image, X, Y];
+    var colfig = [fig];
+    // Swap the imges
+    Image = KryssImage;
+    KryssImage = CirkelImage;
+    CirkelImage = Image;
+    //canvas.strokeStyle = "black";
+>>>>>>> origin/master
 });
 
 function Square(click_image, clicked) {
