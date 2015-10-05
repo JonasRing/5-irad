@@ -3,7 +3,15 @@ var spelCanvas = document.getElementById("board");
 var spelContext = spelCanvas.getContext("2d");
 var CirkelImage = document.getElementById('Cirkel');
 var KryssImage = document.getElementById('Kryss');
+var Square = {};
+var SquareCollection = new Array(30); for (i = 0; i < 30; i++) { SquareCollection[i] = new Array(30); };
 
+
+for (i = 0; i < 30; i++) {
+    for (j = 0; j < 30; j++) {
+        SquareCollection[i][j] = Square;
+    };
+};
 // Draw the Spel board 
 
 drawBoard();
@@ -23,12 +31,6 @@ function drawBoard() {
         }
     }
 }
-var Square = new Square("Kryss", false);
-var SquareCollection = new Array();
-SquareCollection.push(Square);
-// SquareCollection[0] = Square;
-// Get Click-coordination and draw the: X and O
-//if (!SquareCollection[0].clickedOrNot) {
 
 
 
@@ -43,36 +45,37 @@ $('#board').on('click', function (e) {
     var xc = X;
     var yc = Y;
     var X = (X * 30); var Y = (Y * 30);
+    if (!SquareCollection[xc][yc].clicked) {
+        // window.alert("You Clicked!!!");
+        Image = KryssImage;
+        // if (!(SquareCollection[SquareCollection.length-1].clickedOrNot)){
 
-    // window.alert("You Clicked!!!");
-    Image = KryssImage;
-    // if (!(SquareCollection[SquareCollection.length-1].clickedOrNot)){
 
+        spelContext.drawImage(Image, X, Y, 30, 30);
+        SquareCollection[xc][yc] = { clickImage: Image.id, clicked: true };//Square
+        // Collect all square and info
 
-    spelContext.drawImage(Image, X, Y, 30, 30);
-    Square.click_image = Image.id;
-    Square.clicked = true;
-    var SquareCollection = [[Square.click_image, Square.clicked]];
-    // Collect all square and info
+        //SquareCollection.push(Square);
+        //}
+        //else {
+        //  window.alert("You clicked in the same Square!!! ");
+        //}
+        //window.alert("row:"+xc+"column:"+yc+"___"+"Type of Image: " + Image.id);
+        //window.alert("Row:" + yc + "Column:" + xc);
+        window.alert("X:" + xc + "Y:" + yc + "___" + "Image:" + SquareCollection[xc][yc].clickImage + "--" + "clicked?" + SquareCollection[xc][yc].clicked);
 
-    //SquareCollection.push(Square);
-    //}
-    //else {
-    //  window.alert("You clicked in the same Square!!! ");
-    //}
-    //window.alert("row:"+xc+"column:"+yc+"___"+"Type of Image: " + Image.id);
-    //window.alert("Row:" + yc + "Column:" + xc);
-    window.alert("Image:" + SquareCollection[0][0] + "--" + "clicked?" + SquareCollection[0][1]);
+        spelContext.strokeStyle = "black";
+        var fig = [Image, X, Y];
+        var colfig = [fig];
+        // Swap the imges
+        Image = KryssImage;
+        KryssImage = CirkelImage;
+        CirkelImage = Image;
+    }
+    else {
+        window.alert("The Square has been Clicked before!!! Try another Square. ");
 
-    spelContext.strokeStyle = "black";
-    var fig = [Image, X, Y];
-    var colfig = [fig];
-    // Swap the imges
-    Image = KryssImage;
-    KryssImage = CirkelImage;
-    CirkelImage = Image;
-
-    //canvas.strokeStyle = "black";
+    }
 });
 
 function Square(click_image, clicked) {
