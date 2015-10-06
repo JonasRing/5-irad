@@ -36,6 +36,16 @@ function drawBoard() {
 
 $('#board').on('click', function (e) {
 
+    var kryssja = 0;
+    var Cirkelja = 0;
+
+    //if (SquareCollection[01][00].clicked) {
+    //    window.alert(SquareCollection[01][00].clickImage);
+    //    if (SquareCollection[01][00].clickImage == "Kryss")
+    //    {
+    //        window.alert("Kryss");
+    //    }
+    //}
     x = e.pageX - spelCanvas.offsetLeft;
     y = e.pageY - spelCanvas.offsetTop;
     var X = x / 30; var Y = y / 30;
@@ -62,18 +72,86 @@ $('#board').on('click', function (e) {
         //}
         //window.alert("row:"+xc+"column:"+yc+"___"+"Type of Image: " + Image.id);
         //window.alert("Row:" + yc + "Column:" + xc);
-        window.alert("X:" + xc + "Y:" + yc + "___" + "Image:" + SquareCollection[xc][yc].clickImage + "--" + "clicked?" + SquareCollection[xc][yc].clicked);
+        document.getElementById('success').innerHTML = ("X:" + xc + "Y:" + yc + "___" + "Image:" + SquareCollection[xc][yc].clickImage + "--" + "clicked?" + SquareCollection[xc][yc].clicked);
 
         spelContext.strokeStyle = "black";
         var fig = [Image, X, Y];
         var colfig = [fig];
         // Swap the imges
-        Image = KryssImage;
+        Image = KryssImage; 
         KryssImage = CirkelImage;
         CirkelImage = Image;
+
+
+        for (var r = 0; r < 30; r++) {
+
+            for (var i = 0; i < 30; i++) {
+
+                if (SquareCollection[i][r].clickImage == null) {
+                    kryssja = 0;
+                    Cirkelja = 0;
+                }
+                if (SquareCollection[i][r].clickImage == "Kryss") {
+                    kryssja++
+                    Cirkelja = 0;
+                    if (SquareCollection[i][r + 1].clickImage == "Kryss"
+                        && SquareCollection[i][r + 2].clickImage == "Kryss"
+                        && SquareCollection[i][r + 3].clickImage == "Kryss"
+                        && SquareCollection[i][r + 4].clickImage == "Kryss") {
+                        window.alert("5 Kryss lodrät");
+                    }
+                    if (SquareCollection[i + 1][r + 1].clickImage == "Kryss"
+                        && SquareCollection[i + 2][r + 2].clickImage == "Kryss"
+                        && SquareCollection[i + 3][r + 3].clickImage == "Kryss"
+                        && SquareCollection[i + 4][r + 4].clickImage == "Kryss") {
+                        window.alert("5 Kryss diagonalt");
+                    }
+                    if (SquareCollection[i - 1][r + 1].clickImage == "Kryss"
+                         && SquareCollection[i - 2][r + 2].clickImage == "Kryss"
+                         && SquareCollection[i - 3][r + 3].clickImage == "Kryss"
+                         && SquareCollection[i - 4][r + 4].clickImage == "Kryss") {
+                        window.alert("5 Kryss diagonalt");
+                    }
+                }
+
+                if (SquareCollection[i][r].clickImage == "Cirkel") {
+                    Cirkelja++
+                    kryssja = 0;
+                    if (SquareCollection[i][r + 1].clickImage == "Cirkel"
+                        && SquareCollection[i][r + 2].clickImage == "Cirkel"
+                        && SquareCollection[i][r + 3].clickImage == "Cirkel"
+                        && SquareCollection[i][r + 4].clickImage == "Cirkel") {
+                        window.alert("5 Cirklar lodrät");
+                    }
+                    if (SquareCollection[i + 1][r + 1].clickImage == "Cirkel"
+                        && SquareCollection[i + 2][r + 2].clickImage == "Cirkel"
+                        && SquareCollection[i + 3][r + 3].clickImage == "Cirkel"
+                        && SquareCollection[i + 4][r + 4].clickImage == "Cirkel") {
+                        window.alert("5 Cirklar diagonalt");
+                    }
+                    if (SquareCollection[i - 1][r + 1].clickImage == "Cirkel"
+                        && SquareCollection[i - 2][r + 2].clickImage == "Cirkel"
+                        && SquareCollection[i - 3][r + 3].clickImage == "Cirkel"
+                        && SquareCollection[i - 4][r + 4].clickImage == "Cirkel") {
+                        window.alert("5 Cirklar diagonalt");
+                    }
+
+                }
+
+                if (kryssja == 5) {
+                    window.alert("5 Kryss vågrätt");
+                }
+                if (Cirkelja == 5) {
+                    window.alert("5 Cirklar vågrätt");
+                }
+
+                //window.alert(SquareCollection[i][00].clickImage);
+            }
+        }
+
     }
     else {
-        window.alert("The Square has been Clicked before!!! Try another Square. ");
+        document.getElementById('success').innerHTML = ("The Square has been Clicked before!!! Try another Square. ");
 
     };
 });
