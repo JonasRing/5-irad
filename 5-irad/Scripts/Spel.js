@@ -23,7 +23,7 @@ function drawBoard() {
         for (var y = 0; y < 30; y++) {
             spelContext.beginPath();
             spelContext.lineWidth = "1";
-            spelContext.strokeStyle = "black";
+            spelContext.strokeStyle = "white";
             spelContext.rect(30 * x, 30 * y, 30, 30);
             spelContext.stroke();
 
