@@ -6,16 +6,20 @@ var KryssImage = document.getElementById('Kryss');
 var Square = {};
 var SquareCollection = new Array(30); for (i = 0; i < 30; i++) { SquareCollection[i] = new Array(30); };
 
+document.getElementById("NyttS").addEventListener("click", drawBoard, false);
 
-for (i = 0; i < 30; i++) {
-    for (j = 0; j < 30; j++) {
-        SquareCollection[i][j] = Square;
-    };
-};
+
 // Draw the Spel board 
 
 drawBoard();
 function drawBoard() {
+    for (i = 0; i < 30; i++) {
+        for (j = 0; j < 30; j++) {
+            SquareCollection[i][j] = Square;
+        };
+    };
+    document.getElementById('success').innerHTML = ("Nytt bräde");
+    spelContext.clearRect(0, 0, spelCanvas.width, spelCanvas.height);
     spelContext.clearRect(0, 0, 30, 30);
     spelContext.fillStyle = "grey";
     spelContext.strokeStyle = "red";

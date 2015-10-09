@@ -2,52 +2,40 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>Luffarschack</h1>
-    <p class="lead">&copy; @DateTime.Now.Year - JONAS <span><b>och Nizar</b></span></p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+@*<div class="container">*@
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-5">
+                <h1>Luffarschack</h1>
+            </div>
+                <div class="col-md-7">
+                    <img src="~/Content/Images/21203862-origpic-ecffc4.gif" class="img-circle" alt="Cinque Terre" width="506" height="263">
+                </div>
+                <p class="lead">&copy; @DateTime.Now.Year - JONAS <span><b>och Nizar</b></span></p>
+            </div>
 </div>
+    
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <button id="NyttS" type="button" class="btn btn-success">Nytt spel</button>
+    <div onclick="showCoords(event)"><p id="demo"></p></div>
+    <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong id="success">Status!</strong>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
-<div onclick="showCoords(event)"><p id="demo"></p></div>
-<div class="alert alert-success">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong id="success">Status!</strong>
-</div>
-<body>
-    @*<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.7.1.js"></script>*@
-    @*<div class="container">*@
+    <body>
+        @*<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.7.1.js"></script>*@
+        @*<div class="container">*@
         <div>
-            <canvas id="board"  class='img-responsive' alt="bräde" width="900" height="900"></canvas>
+            <canvas id="board" class='img-responsive' alt="bräde" width="1000" height="1000"></canvas>
         </div>
-    @*<div>
-        <canvas id="board" width="900" height="900"></canvas>
-    </div>*@
-    <div>
-        <img id="Kryss" src="~/Content/Images/kryss.png" alt="Kryss" width="30" height="30">
-        <img id="Cirkel" src="~/Content/Images/Cirkel.png" alt="Cirkel" width="30" height="30">
-    </div>
+        @*<div>
+                <canvas id="board" width="900" height="900"></canvas>
+            </div>*@
+        <div>
+            <img id="Kryss" src="~/Content/Images/kryss.png" alt="Kryss" width="30" height="30">
+            <img id="Cirkel" src="~/Content/Images/Cirkel.png" alt="Cirkel" width="30" height="30">
+        </div>
 
 
 
-</body>
+    </body>
