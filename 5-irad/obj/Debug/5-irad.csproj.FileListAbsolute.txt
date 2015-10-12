@@ -78,3 +78,7 @@ C:\Users\JonasR\Documents\GitHub\5-irad\5-irad\bin\Newtonsoft.Json.xml
 C:\Users\JonasR\Documents\GitHub\5-irad\5-irad\obj\Debug\5-irad.csprojResolveAssemblyReference.cache
 C:\Users\JonasR\Documents\GitHub\5-irad\5-irad\obj\Debug\5-irad.dll
 C:\Users\JonasR\Documents\GitHub\5-irad\5-irad\obj\Debug\5-irad.pdb
+C:\Users\JonasR\Documents\GitHub\5-irad\5-irad\bin\EntityFramework.dll
+C:\Users\JonasR\Documents\GitHub\5-irad\5-irad\bin\EntityFramework.SqlServer.dll
+C:\Users\JonasR\Documents\GitHub\5-irad\5-irad\bin\EntityFramework.xml
+C:\Users\JonasR\Documents\GitHub\5-irad\5-irad\bin\EntityFramework.SqlServer.xml
