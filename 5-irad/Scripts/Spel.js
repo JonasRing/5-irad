@@ -79,7 +79,7 @@ $('#board').on('click', function (e) {
         //}
         //window.alert("row:"+xc+"column:"+yc+"___"+"Type of Image: " + Image.id);
         //window.alert("Row:" + yc + "Column:" + xc);
-        //document.getElementById('success').innerHTML = ("X:" + xc + "Y:" + yc + "___" + "Image:" + SquareCollection[xc][yc].clickImage + "--" + "clicked?" + SquareCollection[xc][yc].clicked+"You win:" + win);
+        ////document.getElementById('success').innerHTML = ("X:" + xc + "Y:" + yc + "___" + "Image:" + SquareCollection[xc][yc].clickImage + "--" + "clicked?" + SquareCollection[xc][yc].clicked+"You win:" + win);
 
         spelContext.strokeStyle = "black";
         var fig = [Image, X, Y];
@@ -157,18 +157,29 @@ $('#board').on('click', function (e) {
         //}
 
 
+        level = document.getElementById("level").value;
+        if (level === "")
+        {
+            //By default level is 2.
+            level = 2;
+        }
+        //level = 3;
+
 
         ////Winning Status Vertical,Horizontal Diagonal NW-SE and Diagonal NE-SW.
 
-        winningStatusVertical(SquareCollection, 3, "Kryss");
-        winningStatusVertical(SquareCollection, 3, "Cirkel");
-        winningStatusHorizontal(SquareCollection, 3, "Kryss");
-        winningStatusHorizontal(SquareCollection, 3, "Cirkel");
-        winningStatusDiagonal(SquareCollection, 3, "Kryss");
-        winningStatusDiagonal(SquareCollection, 3, "Cirkel");
-        winningStatusDiagonalNESW(SquareCollection, 3, "Kryss");
-        winningStatusDiagonalNESW(SquareCollection, 3, "Cirkel");
-        document.getElementById('success').innerHTML = ("X:" + xc + "Y:" + yc + "___" + "Image:" + SquareCollection[xc][yc].clickImage + "--" + "clicked?" + SquareCollection[xc][yc].clicked + "You win:" + win);
+
+
+
+        winningStatusVertical(SquareCollection, level, "Kryss");
+        winningStatusVertical(SquareCollection, level, "Cirkel");
+        winningStatusHorizontal(SquareCollection, level, "Kryss");
+        winningStatusHorizontal(SquareCollection, level, "Cirkel");
+        winningStatusDiagonal(SquareCollection, level, "Kryss");
+        winningStatusDiagonal(SquareCollection, level, "Cirkel");
+        winningStatusDiagonalNESW(SquareCollection, level, "Kryss");
+        winningStatusDiagonalNESW(SquareCollection, level, "Cirkel");
+        document.getElementById('success').innerHTML = ("X:" + xc + "Y:" + yc + "___" + "Image:" + SquareCollection[xc][yc].clickImage + "--" + "clicked?" + SquareCollection[xc][yc].clicked + "You win:" + win+"    in the Level:"+level);
 
 
     }
