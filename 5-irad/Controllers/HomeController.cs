@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _5_irad.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -25,6 +26,12 @@ namespace _5_irad.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Points(Highscore highscore)
+        {
+            return null;
         }
     }
 }

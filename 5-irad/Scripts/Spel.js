@@ -39,9 +39,33 @@ function drawBoard() {
     }
 }
 
+function submitForm() {
 
+    var model = new Object();
+    //model.ID = 120;
+    model.Name = "hej";
+    model.Wins = 360;
+    model.Points = 480;
+
+    $.ajax({
+        url: '/Home/Points',
+        type: 'POST',
+        async: false,
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        //processData: false,
+        data: JSON.stringify({ highscore: model }),
+
+        success: function (data) {
+            alert(data);
+        }
+    });
+
+}
 
 $('#board').on('click', function (e) {
+
+
     win = false;
     var kryssja = 0;
     var Cirkelja = 0;
