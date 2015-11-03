@@ -33,5 +33,10 @@ namespace _5_irad.Controllers
         {
             return null;
         }
+
+        public ActionResult Chat()
+        {
+            return View();
+        }
     }
 }

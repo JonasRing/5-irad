@@ -86,3 +86,14 @@ C:\Users\NazarD\Documents\GitHub\5-irad\5-irad\bin\EntityFramework.dll
 C:\Users\NazarD\Documents\GitHub\5-irad\5-irad\bin\EntityFramework.SqlServer.dll
 C:\Users\NazarD\Documents\GitHub\5-irad\5-irad\bin\EntityFramework.xml
 C:\Users\NazarD\Documents\GitHub\5-irad\5-irad\bin\EntityFramework.SqlServer.xml
+C:\Users\JonasR\Documents\GitHub\5-irad\5-irad\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\JonasR\Documents\GitHub\5-irad\5-irad\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\JonasR\Documents\GitHub\5-irad\5-irad\bin\Microsoft.Owin.dll
+C:\Users\JonasR\Documents\GitHub\5-irad\5-irad\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\JonasR\Documents\GitHub\5-irad\5-irad\bin\Microsoft.Owin.Security.dll
+C:\Users\JonasR\Documents\GitHub\5-irad\5-irad\bin\Owin.dll
+C:\Users\JonasR\Documents\GitHub\5-irad\5-irad\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\JonasR\Documents\GitHub\5-irad\5-irad\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\JonasR\Documents\GitHub\5-irad\5-irad\bin\Microsoft.Owin.xml
+C:\Users\JonasR\Documents\GitHub\5-irad\5-irad\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\JonasR\Documents\GitHub\5-irad\5-irad\bin\Microsoft.Owin.Security.xml
