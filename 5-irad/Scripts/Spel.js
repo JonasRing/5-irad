@@ -8,6 +8,8 @@ var win;
 var level;
 var rep;
 var SquareCollection = new Array(30); for (i = 0; i < 30; i++) { SquareCollection[i] = new Array(30); };
+var yc;
+var xc;
 
 document.getElementById("NyttS").addEventListener("click", drawBoard, false);
 
@@ -63,7 +65,46 @@ function submitForm() {
 
 }
 
+$(document).ready(function () {
+    // Reference the auto-generated proxy for the hub.
+    var chat = $.connection.luffarHub;
+    // Create a function that the hub can call back to display messages.
+    chat.client.addNewMessageToPage = function (name, message) {
+        // Add the message to the page.
+        $('#discussion').append('<li><strong>' + htmlEncode(name)
+            + '</strong>: ' + htmlEncode(message) + '</li>');
+    };
+    // Get the user name and store it to prepend to messages.
+    $('#displayname').val(prompt('Enter your name:', ''));
+    // Set initial focus to message input box.
+    $('#message').focus();
+    // Start the connection.
+    $.connection.hub.start().done(function () {
+
+        $('#board').click(function () {
+
+            chat.server.send($('#displayname').val(), xc.toString() + yc.toString());
+            $('#board').focus();
+
+        });
+
+        $('#sendmessage').click(function () {
+            // Call the Send method on the hub.
+            chat.server.send($('#displayname').val(), $('#message').val());
+            // Clear text box and reset focus for next comment.
+            $('#message').val('').focus();
+        });
+    });
+});
+// This optional function html-encodes messages for display in the page.
+function htmlEncode(value) {
+    var encodedValue = $('<div />').text(value).html();
+    return encodedValue;
+}
+
 $('#board').on('click', function (e) {
+
+
 
 
     win = false;
@@ -83,8 +124,8 @@ $('#board').on('click', function (e) {
     //var xc = X;
     //var yc = Y;
     var X = -(Math.ceil(-X)); var Y = -(Math.ceil(-Y));
-    var xc = X;
-    var yc = Y;
+     xc = X;
+     yc = Y;
     var X = (X * 30); var Y = (Y * 30);
     if (!SquareCollection[xc][yc].clicked) {
         // window.alert("You Clicked!!!");
@@ -204,7 +245,7 @@ $('#board').on('click', function (e) {
         winningStatusDiagonalNESW(SquareCollection, level, "Kryss");
         winningStatusDiagonalNESW(SquareCollection, level, "Cirkel");
         document.getElementById('success').innerHTML = ("X:" + xc + "Y:" + yc + "___" + "Image:" + SquareCollection[xc][yc].clickImage + "--" + "clicked?" + SquareCollection[xc][yc].clicked + "You win:" + win+"    in the Level:"+level);
-
+        skithög()
 
     }
     else {
