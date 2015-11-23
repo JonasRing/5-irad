@@ -105,6 +105,7 @@ function htmlEncode(value) {
 $('#board').on('click', function (e) {
 
 
+    submitForm()
 
 
     win = false;

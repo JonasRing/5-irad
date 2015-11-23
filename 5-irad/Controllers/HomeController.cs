@@ -9,6 +9,7 @@ namespace _5_irad.Controllers
 {
     public class HomeController : Controller
     {
+        private HighscoreDBContext db = new HighscoreDBContext();
         public ActionResult Index()
         {
             return View();
@@ -31,7 +32,14 @@ namespace _5_irad.Controllers
         [HttpPost]
         public ActionResult Points(Highscore highscore)
         {
-            return null;
+            if (ModelState.IsValid)
+            {
+                db.Highscores.Add(highscore);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(highscore);
         }
 
         public ActionResult Chat()
