@@ -77,15 +77,17 @@ $(document).ready(function () {
     // Create a function that the hub can call back to display messages.
     chat.client.addNewMessageToPage = function (name, message, sendX, sendY) {
         // Add the message to the page.
-        sendXX = sendX;
-        sendYY = sendY;
-        spelContext.drawImage(Image, sendX, sendY, 30, 30);
-
+        if ($('#displayname').val() != name)
+        {
+    sendXX = sendX;
+    sendYY = sendY;
+    addDrag(Image);
+        }
         $('#discussion').append('<li><strong>' + htmlEncode(name)
             + '</strong>: ' + htmlEncode(message) + htmlEncode(sendX) + htmlEncode(sendY) + '</li>');
 
         senastDrag = name;
-        //window.alert(senastDrag);
+       
 
     };
     // Get the user name and store it to prepend to messages.
@@ -108,7 +110,7 @@ $(document).ready(function () {
             if ($('#displayname').val() != senastDrag)
             {
                 window.alert("ja det var din tur");
-                window.alert(Image.id);
+                //window.alert(Image.id);
                 drawImage(e, chat);
 
             }
@@ -153,17 +155,24 @@ function drawImage(e, chat)
     yc = Y;
     var X = (X * 30); var Y = (Y * 30);
 
+
+
     if (!SquareCollection[xc][yc].clicked) {
         // window.alert("You Clicked!!!");
+        Image = KryssImage;
+        sendXX = X;
+        sendYY = Y;
+        addDrag(Image)
+
         Image = KryssImage;
         // if (!(SquareCollection[SquareCollection.length-1].clickedOrNot)){
 
 
-        spelContext.drawImage(Image, X, Y, 30, 30);
+        //spelContext.drawImage(Image, X, Y, 30, 30);
         geX = X;
         geY = Y;
-
-        SquareCollection[xc][yc] = { clickImage: Image.id, clicked: true };//Square
+        //window.alert(geX + geY);
+        //SquareCollection[xc][yc] = { clickImage: Image.id, clicked: true };//Square
         // Collect all square and info
 
         //SquareCollection.push(Square);
@@ -176,8 +185,9 @@ function drawImage(e, chat)
         ////document.getElementById('success').innerHTML = ("X:" + xc + "Y:" + yc + "___" + "Image:" + SquareCollection[xc][yc].clickImage + "--" + "clicked?" + SquareCollection[xc][yc].clicked+"You win:" + win);
 
         spelContext.strokeStyle = "black";
-        var fig = [Image, X, Y];
-        var colfig = [fig];
+        //var fig = [Image, X, Y];
+
+        //var colfig = [fig];
         // Swap the imges
         Image = KryssImage;
         KryssImage = CirkelImage;
@@ -282,6 +292,18 @@ function drawImage(e, chat)
         document.getElementById('success').innerHTML = ("The Square has been Clicked before!!! Try another Square. ");
 
     };
+}
+
+function addDrag(Image)
+{
+    window.alert("stop stanna");
+    
+    spelContext.drawImage(Image, sendXX, sendYY, 30, 30);
+    window.alert(sendXX + sendYY);
+    sendXX = (sendXX / 30);
+    sendYY = (sendYY / 30);
+    window.alert(sendXX + sendYY);
+    SquareCollection[sendXX][sendYY] = { clickImage: Image.id, clicked: true };//Square
 }
 
 //// Methods to discovering the X and O
