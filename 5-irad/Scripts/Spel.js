@@ -75,15 +75,25 @@ $(document).ready(function () {
     // Reference the auto-generated proxy for the hub.
     var chat = $.connection.luffarHub;
     // Create a function that the hub can call back to display messages.
-    chat.client.addNewMessageToPage = function (name, message, sendX, sendY) {
+    chat.client.addNewMessageToPage = function (name, symbol, message, sendX, sendY) {
         // Add the message to the page.
         if ($('#displayname').val() != name)
         {
     sendXX = sendX;
     sendYY = sendY;
+    if (symbol == "Kryss")
+    {
+        Image = KryssImage;
+        $('#imageSymbol').text("Cirkel");
+    }
+    if (symbol == "Cirkel") {
+        Image = CirkelImage;
+        $('#imageSymbol').text("Kryss");
+    }
+    
     addDrag(Image);
         }
-        $('#discussion').append('<li><strong>' + htmlEncode(name)
+        $('#discussion').append('<li><strong>' + htmlEncode(name) + '</strong>: ' + htmlEncode(symbol)
             + '</strong>: ' + htmlEncode(message) + htmlEncode(sendX) + htmlEncode(sendY) + '</li>');
 
         senastDrag = name;
@@ -109,7 +119,13 @@ $(document).ready(function () {
             
             if ($('#displayname').val() != senastDrag)
             {
-                window.alert("ja det var din tur");
+                window.alert($('#imageSymbol').text());
+                if ($('#imageSymbol').text() == "")
+                {
+                    $('#imageSymbol').text("Kryss");
+                    window.alert($('#imageSymbol').text());
+                }
+                
                 //window.alert(Image.id);
                 drawImage(e, chat);
 
@@ -147,8 +163,7 @@ function drawImage(e, chat)
     y = e.pageY - spelCanvas.offsetTop;
     var X = x / 30; var Y = y / 30;
 
-    //var xc = X;
-    //var yc = Y;
+
     var X = -(Math.ceil(-X)); var Y = -(Math.ceil(-Y));
 
     xc = X;
@@ -158,13 +173,21 @@ function drawImage(e, chat)
 
 
     if (!SquareCollection[xc][yc].clicked) {
+
+        if ($('#imageSymbol').text() == "Kryss")
+        {
+            Image = KryssImage;
+        }
+
+        if ($('#imageSymbol').text() == "Cirkel")
+        {
+            Image = CirkelImage;
+        }
         // window.alert("You Clicked!!!");
-        Image = KryssImage;
         sendXX = X;
         sendYY = Y;
         addDrag(Image)
 
-        Image = KryssImage;
         // if (!(SquareCollection[SquareCollection.length-1].clickedOrNot)){
 
 
@@ -189,12 +212,10 @@ function drawImage(e, chat)
 
         //var colfig = [fig];
         // Swap the imges
-        Image = KryssImage;
-        KryssImage = CirkelImage;
-        CirkelImage = Image;
 
         //send position of click to other player.
-        chat.server.send($('#displayname').val(), $('#message').val(), geX, geY);
+        window.alert(Image.id);
+        chat.server.send($('#displayname').val(), $('#imageSymbol').text(),  $('#message').val(), geX, geY);
         //$('#board').focus();
         //for (var r = 0; r < 30; r++) {
 
@@ -296,13 +317,9 @@ function drawImage(e, chat)
 
 function addDrag(Image)
 {
-    window.alert("stop stanna");
-    
     spelContext.drawImage(Image, sendXX, sendYY, 30, 30);
-    window.alert(sendXX + sendYY);
     sendXX = (sendXX / 30);
     sendYY = (sendYY / 30);
-    window.alert(sendXX + sendYY);
     SquareCollection[sendXX][sendYY] = { clickImage: Image.id, clicked: true };//Square
 }
 
