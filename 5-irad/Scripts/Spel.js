@@ -51,9 +51,9 @@ function submitForm() {
 
     var model = new Object();
     //model.ID = 120;
-    model.Name = "hej";
-    model.Wins = 360;
-    model.Points = 480;
+    model.Name = $('#displayname').val();
+    model.Wins = 1;
+    model.Points = level;
 
     $.ajax({
         url: '/Home/Points',
@@ -119,14 +119,14 @@ $(document).ready(function () {
             
             if ($('#displayname').val() != senastDrag)
             {
-                window.alert($('#imageSymbol').text());
+                
                 if ($('#imageSymbol').text() == "")
                 {
                     $('#imageSymbol').text("Kryss");
-                    window.alert($('#imageSymbol').text());
+                    
                 }
                 
-                //window.alert(Image.id);
+                
                 drawImage(e, chat);
 
             }
@@ -152,13 +152,7 @@ function drawImage(e, chat)
     var kryssja = 0;
     var Cirkelja = 0;
 
-    //if (SquareCollection[01][00].clicked) {
-    //    window.alert(SquareCollection[01][00].clickImage);
-    //    if (SquareCollection[01][00].clickImage == "Kryss")
-    //    {
-    //        window.alert("Kryss");
-    //    }
-    //}
+
     x = e.pageX - spelCanvas.offsetLeft;
     y = e.pageY - spelCanvas.offsetTop;
     var X = x / 30; var Y = y / 30;
@@ -183,7 +177,7 @@ function drawImage(e, chat)
         {
             Image = CirkelImage;
         }
-        // window.alert("You Clicked!!!");
+ 
         sendXX = X;
         sendYY = Y;
         addDrag(Image)
@@ -194,17 +188,13 @@ function drawImage(e, chat)
         //spelContext.drawImage(Image, X, Y, 30, 30);
         geX = X;
         geY = Y;
-        //window.alert(geX + geY);
         //SquareCollection[xc][yc] = { clickImage: Image.id, clicked: true };//Square
         // Collect all square and info
 
         //SquareCollection.push(Square);
         //}
         //else {
-        //  window.alert("You clicked in the same Square!!! ");
-        //}
-        //window.alert("row:"+xc+"column:"+yc+"___"+"Type of Image: " + Image.id);
-        //window.alert("Row:" + yc + "Column:" + xc);
+
         ////document.getElementById('success').innerHTML = ("X:" + xc + "Y:" + yc + "___" + "Image:" + SquareCollection[xc][yc].clickImage + "--" + "clicked?" + SquareCollection[xc][yc].clicked+"You win:" + win);
 
         spelContext.strokeStyle = "black";
@@ -214,7 +204,7 @@ function drawImage(e, chat)
         // Swap the imges
 
         //send position of click to other player.
-        window.alert(Image.id);
+
         chat.server.send($('#displayname').val(), $('#imageSymbol').text(),  $('#message').val(), geX, geY);
         //$('#board').focus();
         //for (var r = 0; r < 30; r++) {
@@ -232,19 +222,16 @@ function drawImage(e, chat)
         //                && SquareCollection[i][r + 2].clickImage == "Kryss"
         //                && SquareCollection[i][r + 3].clickImage == "Kryss"
         //                && SquareCollection[i][r + 4].clickImage == "Kryss") {
-        //                window.alert("5 Kryss lodrät");
         //            }
         //            if (SquareCollection[i + 1][r + 1].clickImage == "Kryss"
         //                && SquareCollection[i + 2][r + 2].clickImage == "Kryss"
         //                && SquareCollection[i + 3][r + 3].clickImage == "Kryss"
         //                && SquareCollection[i + 4][r + 4].clickImage == "Kryss") {
-        //                window.alert("5 Kryss diagonalt");
         //            }
         //            if (SquareCollection[i - 1][r + 1].clickImage == "Kryss"
         //                 && SquareCollection[i - 2][r + 2].clickImage == "Kryss"
         //                 && SquareCollection[i - 3][r + 3].clickImage == "Kryss"
         //                 && SquareCollection[i - 4][r + 4].clickImage == "Kryss") {
-        //                window.alert("5 Kryss diagonalt");
         //            }
         //        }
 
@@ -255,31 +242,25 @@ function drawImage(e, chat)
         //                && SquareCollection[i][r + 2].clickImage == "Cirkel"
         //                && SquareCollection[i][r + 3].clickImage == "Cirkel"
         //                && SquareCollection[i][r + 4].clickImage == "Cirkel") {
-        //                window.alert("5 Cirklar lodrät");
+
         //            }
         //            if (SquareCollection[i + 1][r + 1].clickImage == "Cirkel"
         //                && SquareCollection[i + 2][r + 2].clickImage == "Cirkel"
         //                && SquareCollection[i + 3][r + 3].clickImage == "Cirkel"
         //                && SquareCollection[i + 4][r + 4].clickImage == "Cirkel") {
-        //                window.alert("5 Cirklar diagonalt");
+
         //            }
         //            if (SquareCollection[i - 1][r + 1].clickImage == "Cirkel"
         //                && SquareCollection[i - 2][r + 2].clickImage == "Cirkel"
         //                && SquareCollection[i - 3][r + 3].clickImage == "Cirkel"
         //                && SquareCollection[i - 4][r + 4].clickImage == "Cirkel") {
-        //                window.alert("5 Cirklar diagonalt");
+
         //            }
 
         //        }
 
-        //        if (kryssja == 5) {
-        //            window.alert("5 Kryss vågrätt");
-        //        }
-        //        if (Cirkelja == 5) {
-        //            window.alert("5 Cirklar vågrätt");
-        //        }
 
-        //        //window.alert(SquareCollection[i][00].clickImage);
+
         //    }
         //}
 
@@ -307,6 +288,11 @@ function drawImage(e, chat)
         winningStatusDiagonalNESW(SquareCollection, level, "Cirkel");
         document.getElementById('success').innerHTML = ("X:" + xc + "Y:" + yc + "___" + "Image:" + SquareCollection[xc][yc].clickImage + "--" + "clicked?" + SquareCollection[xc][yc].clicked + "You win:" + win + "    in the Level:" + level);
         
+        if (win == true)
+        {
+            submitForm();
+        }
+
 
     }
     else {
